@@ -1,0 +1,37 @@
+batch_size: 2
+
+name: openorca
+noise_function: "constant"
+parquet_file_path: "data/open_orca_testing_dataset_small.parquet"
+
+subset_size: 50
+# Data Read Function
+read_fn: "read_parquet"
+batch_col: "sample_id"
+batch_inner_col: "_batch_idx"
+# batch_col: "batch_id"
+# batch_inner_col: "_inner_batch_idx"
+
+truncated_seq_len: 32
+max_num_samples: null
+
+# If you want to generate data points, set this to true
+generate_data_points: false
+num_data_points: 1
+prior_data_path: "data/open_orca_testing_dataset_small_embeddings.npy"
+embeddings_path: "data/open_orca_testing_dataset_small_embeddings_512.npy"
+
+# If you want to use precomputed noisy embeddings, set this to the path of the embeddings
+noisy_embeddings_path: data/input_based_noise # null # "data/open_orca_testing_dataset_small_embeddings_512.npy"
+load_noisy_embeddings: false
+
+# Path to the language model
+# lm_path: "/models/jay/llama3_2/LLama-3.2-1B-Instruct" # "../LLama-3.2-1B-Instruct"
+vocab_size: 128256
+embedding_dim: 2048
+
+# # Path to the embedding model
+# embedding_model_path:  "/models/jay/llama3_2/LLama-3.2-1B-Instruct" # "../LLama-3.2-1B-Instruct"  # "gpt2-medium"
+# translation_dict_path: data/translation/gpt2_llama_translation.json
+
+

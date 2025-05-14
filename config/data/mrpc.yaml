@@ -1,0 +1,9 @@
+name: "mrpc"
+batch_size: 2
+truncated_seq_len: 32
+
+# Sample ids to use
+# We need this because of the cross-tokenization issue
+# If you want to use all the samples, set this to null
+sample_ids_to_use_path: null # "data/dataset_sample_ids/same_len_tokenized_sample_ids_gpt2_mrpc.npy"
+subset_size: 50

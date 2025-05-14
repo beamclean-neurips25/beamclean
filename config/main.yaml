@@ -1,0 +1,30 @@
+seed: 42
+project_name: "BeamClean"
+run_name: "BeamClean"
+device: "cuda"
+use_mixed_precision: true
+use_checkpointing: true
+evaluate_pii: true
+num_workers: 64
+
+run:
+  beam_clean: false
+  nearest_neighbor: true
+
+defaults:
+  - data: papillon
+  - beam_clean: s
+  - privacy: privacy_config_llama3
+  - _self_
+
+logging:
+  wandb_project: "beam_clean_logs"
+  tags:
+    - "BeamClean"
+
+hydra:
+  run:
+    dir: results/${now:%Y%m%d_%H%M%S}
+    # dir: output/${project_name}/${run_name}/${now:%Y%m%d_%H%M%S}
+
+run_dir: ${hydra:run.dir}

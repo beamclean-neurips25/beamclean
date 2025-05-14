@@ -1,0 +1,8 @@
+name: "papillon"
+batch_size: 2
+
+# Sample ids to use
+# We need this because of the cross-tokenization issue
+# If you want to use all the samples, set this to null
+truncated_seq_len: 256
+subset_size: 50

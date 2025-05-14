@@ -1,0 +1,46 @@
+name: "openorca"
+batch_size: 1
+
+noise_function: "constant"
+parquet_file_path: "data/open_orca_testing_dataset_big.parquet"
+candidate_token_ids_path: data/candidate_token_ids_big.npy # data/candidate_token_ids.npy
+
+# Data Read Function
+batch_col: "batch_id"
+batch_inner_col: "_inner_batch_idx"
+
+truncated_seq_len: 32
+max_num_samples: -1
+
+# If you want to generate data points, set this to true
+generate_data_points: false
+num_data_points: 1
+prior_data_path: "data/open_orca_testing_dataset_small_embeddings.npy"
+embeddings_path: "data/open_orca_testing_dataset_small_embeddings_512.npy"
+
+# If you want to use precomputed noisy embeddings, set this to the path of the embeddings
+noisy_embeddings_path: data/input_based_noise # null # "data/open_orca_testing_dataset_small_embeddings_512.npy"
+load_noisy_embeddings: false
+
+# # Path to the language model
+# lm_path: "../LLama-3.2-1B-Instruct" # "../LLama-3.2-1B-Instruct"
+# vocab_size: 128256
+# embedding_dim: 2048
+
+# Path to the embedding model
+# embedding_model_path: "NousResearch/DeepHermes-3-Llama-3-8B-Preview"
+
+# Parameters for the constant noise function
+const_noise_params:
+  # The true mean and variance of the noise for the non-axial case
+  noise_dist: "gaussian" # "gaussian"
+  true_mean: 0.00
+  true_variance: 2e-3 # 0.05
+  initial_mean: 0.00
+  initial_variance: 2e-3 # 0.01
+  # Seed for the random number generator
+  seed: 41
+  # If you want to load the mean and variance from a file, set this to true
+  load_from_file: false
+  mean_file: "data/small_dataset_means.npy"
+  var_file: "data/small_dataset_vars.npy"

@@ -1,0 +1,30 @@
+batch_size: 2
+
+noise_function: "constant"
+parquet_file_path: "data/open_orca_testing_dataset_small.parquet"
+noisy_embeddings_path: null # "data/rnn_noisy_embeddings.npy"
+load_noisy_embeddings: false
+# batch_col: "batch_id"
+# batch_inner_col: "_inner_batch_idx"
+
+truncated_seq_len: 32
+max_num_samples: -1
+
+generate_data_points: false
+num_data_points: 1
+prior_data_path: "data/open_orca_testing_dataset_small_embeddings.npy"
+embeddings_path: "data/open_orca_testing_dataset_small_embeddings_512.npy"
+
+lm_path: "/models/jay/llama3_2/LLama-3.2-1B-Instruct" # "../LLama-3.2-1B-Instruct"
+vocab_size: 128256
+embedding_dim: 2048
+
+const_noise_params:
+  true_mean: 0.0
+  true_variance: 4e-4
+  initial_mean: 0.0
+  initial_variance: 1e-5
+  seed: 41
+  load_from_file: false
+  mean_file: "data/small_dataset_means.npy"
+  var_file: "data/small_dataset_vars.npy"

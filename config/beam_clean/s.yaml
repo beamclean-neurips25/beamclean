@@ -1,0 +1,19 @@
+num_epochs: 10
+beam_width: 50
+vocab_chunk_size: 4096
+decode_only: true
+# Only used for the DP model
+candidate_token_ids_path: null # "data/candidate_tokens/candidate_token_ids_union_big_mrpc.npy" # data/candidate_tokens/candidate_token_ids_gpt2_mrpc.npy  # data/candidate_token_ids_big.npy # data/candidate_token_ids.npy
+surrogate_model: "gaussian" # "gaussian" "l1_laplace" "l2_laplace"
+initial_param_val: 0.2
+learning_rate: 0.1
+# Path to the language model
+prior_model: "../LLama-3.2-1B-Instruct" # "gpt2-medium" # "../LLama-3.2-1B-Instruct"  # "../LLama-3.2-1B-Instruct"
+accumulate_gradients: false
+memory_threshold: 0.8 # 90% of total GPU-mem
+
+convergence_tol_pct : 0.5        # stop when |Δloss|/loss < 0.005
+convergence_patience: 2          # …for two consecutive epochs
+
+surrogate:
+ type: constant
